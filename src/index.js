@@ -41,14 +41,15 @@ const getAllCellsId = () => {
   for (i = 0; i < cellsArray.length; i += 1) {
     const el = cellsArray[i];
     el.addEventListener('click', () => {
+      el.style.backgroundColor = 'blue';
       const id = el.attributes[0].value;
       const horseMovesArray = horseMoves(id);
       let j;
       for (j = 0; j < horseMovesArray.length; j += 1) {
         const greenCell = document.getElementById(horseMovesArray[j]);
-        greenCell.style.backgroundColor = 'teal';
-        console.log(greenCell);
+        greenCell.style.backgroundColor = 'green';
       }
+      setTimeout(() => window.location.reload(), 2000);
     });
   }
 };
