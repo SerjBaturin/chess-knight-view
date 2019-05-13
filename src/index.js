@@ -1,5 +1,9 @@
 /* eslint-env browser */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-loop-func */
 
+// Функция horseMoves возвращает массив возможных ходов,
+// она взята из второго задания
 const horseMoves = (now) => {
   // Определяем массив для всех возможных ходов
   const allMoves = [];
@@ -35,6 +39,7 @@ const horseMoves = (now) => {
   return allMoves;
 };
 
+// Функция makeGreenCells окрашивает возможные ходы в зелёный цвет
 const makeGreenCells = (el) => {
   el.style.backgroundColor = 'blue';
   const id = el.attributes[0].value;
@@ -43,17 +48,42 @@ const makeGreenCells = (el) => {
   for (j = 0; j < horseMovesArray.length; j += 1) {
     const greenCell = document.getElementById(horseMovesArray[j]);
     greenCell.style.backgroundColor = 'green';
+    greenCell.style.transition = 'all .5s ease';
   }
 };
 
-const getAllCellsId = () => {
+// Функция getDefaultBgrColor сбрасывает стили шахматной доски
+// до начального состояния
+const getDefaultBgrColor = (arr) => {
+  let i;
+  for (i = 0; i < arr.length; i += 1) {
+    arr[i].style.backgroundColor = '';
+  }
+};
+
+// Функция switch назначает обработчик каждой клетке,
+// а также вызывает другие функции
+const switcher = () => {
   const cellsArray = document.getElementsByClassName('cell');
   let i;
+  let counter = 0;
   for (i = 0; i < cellsArray.length; i += 1) {
     const el = cellsArray[i];
     el.addEventListener('click', () => {
-      makeGreenCells(el);
+      getDefaultBgrColor(cellsArray);
+      switch (counter) {
+        case 0:
+          makeGreenCells(el);
+          counter = 1;
+          break;
+        case 1:
+          makeGreenCells(el);
+          counter = 0;
+          break;
+        default:
+          break;
+      }
     });
   }
 };
-getAllCellsId();
+switcher();
