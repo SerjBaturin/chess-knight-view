@@ -1,12 +1,12 @@
-# Тестовое задание № 4
-## Шахматная доска
+# Chess Knight View
+## Visualisation all possible moves of a chess knight
 
-* Язык: JavaScript
-* Сборка: Gulp
-* Препроцессор: SASS
-* Транспайлер: Babel
-* Код-стайл: Airbnb (подключен через eslinter)
-* Сроки: 12.05.2019 - 13.05.2019
+* JavaScript
+* Gulp
+* SASS
+* Babel
+* Airbnb (eslinter)
+* 12.05.2019 - 13.05.2019
 
-### Чтобы запустить приложение, перейдите по ссылке:
-https://serjbaturin.github.io/test4/
+### Please, follow the link to launch the application:
+https://serjbaturin.github.io/chess-knight-view

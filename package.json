@@ -1,5 +1,5 @@
 {
-  "name": "test4",
+  "name": "chess-knight-view",
   "version": "1.0.0",
   "description": "Chess board - test task №4 ",
   "main": "index.js",

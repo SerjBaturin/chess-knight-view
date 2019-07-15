@@ -2,30 +2,31 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-loop-func */
 
-// Функция horseMoves возвращает массив возможных ходов,
-// она взята из второго задания
-const horseMoves = (now) => {
-  // Определяем массив для всех возможных ходов
+// The knightMoves function returns possible moves of a chess knight in the allMoves array
+// Movement is determined by counting the cells of the field along the 'X' and 'Y' axes
+// from the position of the figure
+const knightMoves = (now) => {
+  // Define an array for all possible moves
   const allMoves = [];
 
-  // Определяем массив движений по оси 'X'
+  // Define an array of movements along the 'X' axis
   const xMoves = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
-  // Определяем координаты фигуры по оси 'X'
+  // Determine the coordinates of the knight along the 'X' axis
   const X = xMoves.indexOf(now[0]) + 1;
 
-  // Определяем координаты по оси 'Y'
+  // Determine the coordinates along the 'Y' axis
   const Y = parseInt(now[1], 10);
 
-  // Определяем длину хода по осям и фильтруем неподходящие значения
+  // Determine the stroke length along the axes and filter inappropriate values
   const xPosition = [X + 2, X - 2, X + 1, X - 1]
     .filter(position => position > 0 && position < 9);
   const yPosition = [Y + 2, Y - 2, Y + 1, Y - 1]
     .filter(position => position > 0 && position < 9);
 
-  // Вычисляем каждый ход фигуры
-  // Чтобы получить ход фигуры, необходимо соблюсти условие: каждый ход - три клетки
-  // Все удовлетворяющие условию варианты записываются в массив allMoves
+  // Calculate each turn of the knight
+  // To get the move of the figure, it is necessary to observe the condition: every move - three cells
+  // All satisfying options are written to the allMoves array
   let i;
   let j;
   for (i = 0; i < xPosition.length; i += 1) {
@@ -35,15 +36,15 @@ const horseMoves = (now) => {
       }
     }
   }
-  // Возвращаем все возможные ходы
+  // Return all possible moves
   return allMoves;
 };
 
-// Функция makeGreenCells окрашивает возможные ходы в зелёный цвет
+// The function makeGreenCells colors possible moves in green
 const makeGreenCells = (el) => {
   el.style.backgroundColor = 'blue';
   const id = el.attributes[0].value;
-  const horseMovesArray = horseMoves(id);
+  const horseMovesArray = knightMoves(id);
   let j;
   for (j = 0; j < horseMovesArray.length; j += 1) {
     const greenCell = document.getElementById(horseMovesArray[j]);
@@ -52,8 +53,8 @@ const makeGreenCells = (el) => {
   }
 };
 
-// Функция getDefaultBgrColor сбрасывает стили шахматной доски
-// до начального состояния
+// The getDefaultBgrColor function resets checkerboard styles
+// to the initial state
 const getDefaultBgrColor = (arr) => {
   let i;
   for (i = 0; i < arr.length; i += 1) {
@@ -61,8 +62,8 @@ const getDefaultBgrColor = (arr) => {
   }
 };
 
-// Функция switch назначает обработчик каждой клетке,
-// а также вызывает другие функции
+// The switcher function assigns a handler to each cell,
+// and also calls other functions
 const switcher = () => {
   const cellsArray = document.getElementsByClassName('cell');
   let i;
